@@ -1,0 +1,16 @@
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: fit-content;
+    margin: 55px auto;
+    font-size: var(--small-font-size);
+
+    &__pages {
+        font-weight: bold;
+    }
+
+    &__logout {
+        margin-top: 62vh;
+    }
+}

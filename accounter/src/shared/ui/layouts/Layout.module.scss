@@ -1,0 +1,42 @@
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black-color);
+}
+
+.layout {
+    margin: 0 auto;
+    display: flex;
+    width: 1440px;
+    flex-wrap: wrap;
+    gap:3px;
+
+
+    &__header {
+        display: flex;
+        align-items: center;
+        position: sticky;
+        z-index: 1000;
+        width: 100%;
+        height: 115px;
+        background-color: var(--light-black-color);
+    }
+
+    &__headerTitle {
+        font-size: var(--giant-font-size);
+        font-weight: bold;
+        margin-left: 20px; 
+    }
+
+     &__aside {
+        width: 153px;
+        height: calc(100vh - 118px);
+        background-color: var(--light-black-color);
+    }
+
+
+    &__wrapper {
+        width: 1280px;
+        background-color: var(--light-black-color);
+    }
+}
