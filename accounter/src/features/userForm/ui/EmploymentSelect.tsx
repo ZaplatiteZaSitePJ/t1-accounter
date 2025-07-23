@@ -4,11 +4,14 @@ import type { FC } from "react";
 
 type Props = InputProps & {
 	defaultValue?: string | undefined;
-	value: string;
+	value?: string;
 	onChange?: (value: string) => void;
 };
 
-const options = [{id: "Manager", value: "Менеджер"}, {id: "Director", value: "Директор"}]
+const options = [
+	{ value: "Manager", ru: "Менеджер" },
+	{ value: "Director", ru: "Директор" },
+];
 
 const EmploymentSelect: FC<Props> = ({
 	sx,
@@ -19,15 +22,48 @@ const EmploymentSelect: FC<Props> = ({
 }) => {
 	return (
 		<FormControl sx={sx}>
-			<InputLabel id="employment-label-id">Должность</InputLabel>
+			<InputLabel
+				id="employment-label-id"
+				sx={{
+					color: "var(--light-grey-color)",
+					"&.Mui-focused": {
+						color: "var(--light-grey-color)",
+					},
+				}}
+			>
+				Должность
+			</InputLabel>
 			<Select
 				label="employment"
 				labelId="employment-label-id"
 				value={value}
 				defaultValue={defaultValue}
 				{...register}
+				sx={{
+					width: "300px",
+					backgroundColor: "transparent",
+					color: "var(--light-grey-color)",
+					"& .MuiOutlinedInput-notchedOutline": {
+						border: "3px solid",
+						borderRadius: "6px",
+						borderColor: "var(--light-grey-color)",
+					},
+					"&:hover .MuiOutlinedInput-notchedOutline": {
+						borderColor: "var(--light-grey-color)",
+						transform: "scale(1.02)",
+						transition: "transform 0.3s ease",
+					},
+					"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+						border: "3px solid",
+						borderColor: "var(--light-grey-color)",
+					},
+				}}
 			>
-				{options.map((employment) => <MenuItem id={employment.id}>{employment.value}</MenuItem>)}
+				{options.map((employment) => (
+					<MenuItem value={employment.value}>
+						{employment.ru}
+					</MenuItem>
+				))}
 			</Select>
 			{subContent}
 		</FormControl>
