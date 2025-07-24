@@ -7,12 +7,9 @@ export default function AuthLayout() {
 			<div className={styles.authLayout}>
 				<header className={styles.authLayout__header}>
 					<div>
-						<Link
-							to={"/"}
-							className={styles.authLayout__headerTitle}
-						>
+						<p className={styles.authLayout__headerTitle}>
 							Accounter
-						</Link>
+						</p>
 					</div>
 				</header>
 				<div className={styles.authLayout__wrapper}>

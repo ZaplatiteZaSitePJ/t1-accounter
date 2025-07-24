@@ -6,7 +6,7 @@ import { emailOptions } from "@features/userForm/options/email.options";
 import PasswordField from "@features/userForm/ui/PasswordField";
 import { handleLogin } from "@features/api/auth/handleLogin";
 import { ButtonFilled } from "@shared/ui/ui-kit/buttons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import cn from "classnames";
 
@@ -14,12 +14,14 @@ const LoginForm = () => {
 	const { register, handleSubmit, reset, getValues } =
 		useForm<Pick<AccountType, "email" | "password">>();
 	const [isError, setIsError] = useState(false);
+	const navigate = useNavigate();
 
 	const onAuth = async () => {
 		try {
 			await handleLogin(getValues("email"), getValues("password"));
 			console.log(getValues());
 			reset();
+			navigate("/");
 		} catch {
 			setIsError(true);
 		}
