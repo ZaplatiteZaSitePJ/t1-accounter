@@ -9,17 +9,26 @@ import { ButtonFilled } from "@shared/ui/ui-kit/buttons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import cn from "classnames";
+import { useUserId } from "@shared/context/useUserId";
 
 const LoginForm = () => {
 	const { register, handleSubmit, reset, getValues } =
 		useForm<Pick<AccountType, "email" | "password">>();
 	const [isError, setIsError] = useState(false);
+
 	const navigate = useNavigate();
+
+	const {setId} = useUserId()
 
 	const onAuth = async () => {
 		try {
-			await handleLogin(getValues("email"), getValues("password"));
+			const id = await handleLogin(getValues("email"), getValues("password"));
 			console.log(getValues());
+			if (id) {
+				setId(String(id))
+			}
+
+			localStorage.setItem("userId", String(id))
 			reset();
 			navigate("/");
 		} catch {

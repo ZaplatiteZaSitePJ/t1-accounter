@@ -1,8 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navigation.module.scss";
 import cn from "classnames";
 
 export default function Navigation() {
+	const navigate = useNavigate()
+	const onLogout = () => {
+		localStorage.removeItem("userId")
+		navigate("/auth/login")
+	}
 	return (
 		<nav className={styles.navigation}>
 			<NavLink
@@ -35,9 +40,9 @@ export default function Navigation() {
 			>
 				создать
 			</NavLink>
-			<NavLink to={"/auth/login"} className={styles.navigation__logout}>
+			<button className={styles.navigation__logout} type="button" onClick={onLogout}>
 				<span>выйти</span>
-			</NavLink>
+			</button>
 		</nav>
 	);
 }

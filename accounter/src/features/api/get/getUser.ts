@@ -1,8 +1,11 @@
 import baseAxios from "../baseAxios";
 
-export const handleLogin = async (id: string) => {
+export const getUser = async () => {
+
+	const userId = localStorage.getItem("userId")
+
 	try {
-		const response = await baseAxios.get(`/users/${id}`, {
+		const response = await baseAxios.get(`/users/${userId}`, {
 			headers: {
 				"Content-Type": "application/json",
 			},

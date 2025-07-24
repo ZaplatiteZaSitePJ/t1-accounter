@@ -1,4 +1,3 @@
-import { useState } from "react";
 import baseAxios from "../baseAxios";
 import type { AccountType } from "@entities/Account/types/Account.interface";
 
@@ -28,7 +27,7 @@ export const handleLogin = async (
 		});
 
 		console.log("Информация:", info.data);
-		return info.data;
+		return info.data.sub;
 	} catch (error: any) {
 		console.error("Ошибка логина:", error.response?.data || error.message);
 		throw error;
