@@ -4,16 +4,25 @@ import { useForm } from "react-hook-form";
 import EmailField from "@features/userForm/ui/EmailField";
 import { emailOptions } from "@features/userForm/options/email.options";
 import PasswordField from "@features/userForm/ui/PasswordField";
-
+import { handleLogin } from "@features/api/auth/handleLogin";
 import { ButtonFilled } from "@shared/ui/ui-kit/buttons";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import cn from "classnames";
 
 const LoginForm = () => {
-	const { register, handleSubmit, reset, getValues } = useForm<AccountType>();
+	const { register, handleSubmit, reset, getValues } =
+		useForm<Pick<AccountType, "email" | "password">>();
+	const [isError, setIsError] = useState(false);
 
-	const onAuth = () => {
-		console.log(getValues());
-		reset();
+	const onAuth = async () => {
+		try {
+			await handleLogin(getValues("email"), getValues("password"));
+			console.log(getValues());
+			reset();
+		} catch {
+			setIsError(true);
+		}
 	};
 
 	return (
@@ -37,6 +46,12 @@ const LoginForm = () => {
 				>
 					Войти
 				</ButtonFilled>
+			</div>
+			<div
+				style={{ display: isError ? "block" : "none" }}
+				className={styles.errorDiv}
+			>
+				<p>Неправильный логин или пароль!</p>
 			</div>
 		</form>
 	);

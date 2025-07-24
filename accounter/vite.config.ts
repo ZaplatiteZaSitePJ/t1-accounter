@@ -15,4 +15,16 @@ export default defineConfig({
 			"@pages": path.resolve(__dirname, "src/pages"),
 		},
 	},
+	server: {
+		allowedHosts: ["localhost"],
+		port: 5173,
+		proxy: {
+			"/api": {
+				changeOrigin: true,
+				secure: false,
+				target: "http://localhost:4000",
+			},
+		},
+		strictPort: true,
+	},
 });
