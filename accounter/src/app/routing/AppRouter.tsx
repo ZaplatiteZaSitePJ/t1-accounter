@@ -7,25 +7,19 @@ import {
 import Main from "@pages/main/Main";
 import { AuthLayout, MainLayout } from "@shared/ui";
 import EditPage from "@pages/edit/EditPage";
+import Login from "@pages/login/Login";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
-		<Route element={<Outlet/>}>
+		<Route element={<Outlet />}>
 			<Route path="/" element={<MainLayout />}>
 				<Route index element={<Main />} />
-				<Route
-					path="/edit" element={<EditPage/>}
-				/>
+				<Route path="/edit" element={<EditPage />} />
 			</Route>
 
 			<Route path="/" element={<AuthLayout />}>
-				<Route
-					path="/auth/login" element={<p>Войти</p>}
-				/>
-				<Route
-					path="/auth/registration" element={<p>Создать</p>}
-				/>
-
+				<Route path="/auth/login" element={<Login />} />
+				<Route path="/auth/registration" element={<p>Создать</p>} />
 			</Route>
 		</Route>
 	)

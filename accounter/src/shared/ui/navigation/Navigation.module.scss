@@ -1,16 +1,24 @@
 .navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    width: fit-content;
-    margin: 55px auto;
-    font-size: var(--small-font-size);
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	width: 100%;
+	margin: 55px auto;
+	padding: 0 16px;
+	font-size: var(--small-font-size);
 
-    &__pages {
-        font-weight: bold;
-    }
+	&__pages {
+		font-weight: bold;
+		transition: ease 0.2s;
+		color: var(--grey-color) !important;
+	}
 
-    &__logout {
-        margin-top: 62vh;
-    }
+	&__logout {
+		margin-top: 60vh;
+	}
+
+	&__active {
+		font-size: var(--normal-font-size);
+		color: var(--light-grey-color) !important;
+	}
 }
