@@ -19,6 +19,7 @@ const router =  createBrowserRouter(
 			</Route>
 
 			<Route path="/" element={<AuthLayout />}>
+				<Route path="*" element={<p>Страница недоступна</p>} />
 				<Route path="/auth/login" element={<Login />} />
 				<Route path="/auth/registration" element={<p>Создать</p>} />
 			</Route>

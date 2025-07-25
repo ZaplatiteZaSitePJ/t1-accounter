@@ -1,8 +1,11 @@
 import { Link, Outlet } from "react-router-dom"
 import styles from "./Layout.module.scss"
 import Navigation from "../navigation/Navigation"
+import { idChecker } from "@features/idCheker"
 
 export default function MainLayout() {
+  idChecker()
+
   return (
     <div className={styles.background}>
         <div className={styles.layout}>
