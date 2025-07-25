@@ -17,7 +17,8 @@ export const getUser = async () => {
 		console.log("Информация:", response.data);
 		return response.data;
 	} catch (error: any) {
-		if (axios.isAxiosError(error) && error.response?.status === 404) {
+		if (axios.isAxiosError(error) && (error.response?.status === 404 || error.response?.status === 401)) {
+			console.log("Необходимо пройти авторизацию!")
 			throw redirect("/auth/login");
 		}
 		console.error("Ошибка логина:", error.response?.data || error.message);

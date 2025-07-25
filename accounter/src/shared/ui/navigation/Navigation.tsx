@@ -1,13 +1,20 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navigation.module.scss";
 import cn from "classnames";
+import { handleLogout } from "@features/api/auth/handleLogout";
 
 export default function Navigation() {
 	const navigate = useNavigate()
-	const onLogout = () => {
-		localStorage.removeItem("userId")
-		navigate("/auth/login")
+	const onLogout = async () => {
+		try {
+			await handleLogout()
+			localStorage.removeItem("userId")
+			navigate("/auth/login")
+		} catch (error) {
+			console.log("что--то пошло не так")
+		}
 	}
+
 	return (
 		<nav className={styles.navigation}>
 			<NavLink
