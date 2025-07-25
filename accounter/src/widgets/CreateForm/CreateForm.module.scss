@@ -5,7 +5,8 @@
 	gap: 32px;
 
 	&__nameContainer,
-	&__contactsContainer {
+	&__contactsContainer,
+	&__passwordContainer {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 24px;

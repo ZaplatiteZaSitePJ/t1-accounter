@@ -35,7 +35,7 @@ export default function Navigation() {
 					})
 				}
 			>
-				изменить
+				настроить
 			</NavLink>
 			<NavLink
 				to={"/add"}

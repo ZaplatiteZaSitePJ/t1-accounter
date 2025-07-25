@@ -17,6 +17,10 @@ import { handleCreate } from "@features/api/actions/handleCreate";
 import { useNavigate } from "react-router-dom";
 import { handleLogin } from "@features/api/actions/handleLogin";
 
+type CreateFormType = AccountType & {
+	dublicatedPassword: string;
+}
+
 const CreateForm = () => {
 	const {
 		register,
@@ -24,7 +28,7 @@ const CreateForm = () => {
 		reset,
 		getValues,
 		formState: { errors },
-	} = useForm<AccountType>();
+	} = useForm<CreateFormType>();
 	
 	const navigate = useNavigate()
 
@@ -92,26 +96,53 @@ const CreateForm = () => {
 
 				<EmploymentSelect register={register("employment")} />
 			</div>
-			<Divider sx={{backgroundColor: "var(--grey-color)"}}/>
 
-			<PasswordField
-				sx={{marginTop: "12px"}}
-				register={register("password", {
-					required: "Пароль обязателен",
-				})}
-				subContent={
-					<>
-						<p className={styles.subInfo}>
-							обязательное поле | Техническим заданием не
-							предусмотрено <b>никаких</b> ограничений на пароль,
-							но, пожалуйста, будьте разумны!
-						</p>
-						{errors.password && (
-							<div className={styles.errorDiv}></div>
-						)}
-					</>
-				}
-			/>
+			<div className={styles.userForm__passwordContainer}>
+				<h2>Задайте и подтвердите пароль</h2>
+				<PasswordField
+					sx={{marginTop: "12px"}}
+					register={register("password", {
+						required: "Пароль обязателен",
+					})}
+					subContent={
+						<>
+							<p className={styles.subInfo}>
+								обязательное поле
+							</p>
+							{errors.password && (
+								<div className={styles.errorDiv}></div>
+							)}
+						</>
+					}
+				/>
+
+				<PasswordField
+					sx={{marginTop: "12px"}}
+					register={register("dublicatedPassword", {
+						required: "Повторить пароль обязательно",
+						validate: (value) => value === getValues('password')
+					})}
+					subContent={
+						<>
+							<p className={styles.subInfo}>
+								обязательное поле  
+							</p>
+							{errors.dublicatedPassword && (
+								<>
+									<div className={styles.errorDiv}></div>
+								</>
+								
+							)}
+						</>
+					}
+				/>
+
+				<p className={styles.subInfo}>
+								Техническим заданием не
+								предусмотрено <b>никаких</b> ограничений на пароль,
+								но, пожалуйста, будьте разумны!
+							</p>
+			</div>
 
 			<div className={styles.userForm__buttonsContainer}>
 					<ButtonBordered onClick={() => reset()}>
