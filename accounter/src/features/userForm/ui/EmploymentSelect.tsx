@@ -9,16 +9,16 @@ type Props = InputProps & {
 };
 
 const options = [
-	{ value: "Engineer", ru: "Инженер" },
-	{ value: "Developer", ru: "Разработчик" },
-	{ value: "Designer", ru: "Дизайнер" },
-	{ value: "Analyst", ru: "Аналитик" },
-	{ value: "Administrator", ru: "Администратор" },
-	{ value: "Consultant", ru: "Консультант" },
-	{ value: "Accountant", ru: "Бухгалтер" },
-	{ value: "Marketer", ru: "Маркетолог" },
-	{ value: "HR", ru: "HR-специалист" },
-	{ value: "Support", ru: "Саппорт" }
+	{ en: "Engineer", ru: "Инженер" },
+	{ en: "Developer", ru: "Разработчик" },
+	{ en: "Designer", ru: "Дизайнер" },
+	{ en: "Analyst", ru: "Аналитик" },
+	{ en: "Administrator", ru: "Администратор" },
+	{ en: "Consultant", ru: "Консультант" },
+	{ en: "Accountant", ru: "Бухгалтер" },
+	{ en: "Marketer", ru: "Маркетолог" },
+	{ en: "HR", ru: "HR-специалист" },
+	{ en: "Support", ru: "Саппорт" }
 ];
 
 const EmploymentSelect: FC<Props> = ({
@@ -68,7 +68,7 @@ const EmploymentSelect: FC<Props> = ({
 				}}
 			>
 				{options.map((employment) => (
-					<MenuItem value={employment.value}>
+					<MenuItem value={employment.ru}>
 						{employment.ru}
 					</MenuItem>
 				))}

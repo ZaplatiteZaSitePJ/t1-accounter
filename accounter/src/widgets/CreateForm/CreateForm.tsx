@@ -14,6 +14,8 @@ import { ButtonBordered, ButtonFilled } from "@shared/ui/ui-kit/buttons";
 import PasswordField from "@features/userForm/ui/PasswordField";
 import { Divider } from "@mui/material";
 import { handleCreate } from "@features/api/actions/handleCreate";
+import { useNavigate } from "react-router-dom";
+import { handleLogin } from "@features/api/actions/handleLogin";
 
 const CreateForm = () => {
 	const {
@@ -23,12 +25,13 @@ const CreateForm = () => {
 		getValues,
 		formState: { errors },
 	} = useForm<AccountType>();
+	
+	const navigate = useNavigate()
 
 	const onCreate = async () => {
 		try {
-			console.log(getValues());
 			await handleCreate(getValues());
-			reset();
+				navigate("/")
 		} catch (error) {
 			console.log(error)
 		}

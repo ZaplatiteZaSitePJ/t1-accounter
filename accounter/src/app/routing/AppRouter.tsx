@@ -18,12 +18,12 @@ const router =  createBrowserRouter(
 				<Route index element={<Main />} loader={getUser}/>
 				<Route path="/edit" element={<EditPage />}  loader={getUser}/>
 				<Route path="/add" element={<CreatePage />} />
+				<Route path="*" element={<p>Страница недоступна</p>} />
 			</Route>
 
 			<Route path="/" element={<AuthLayout />}>
 				<Route path="*" element={<p>Страница недоступна</p>} />
 				<Route path="/auth/login" element={<Login />} />
-				<Route path="/auth/registration" element={<p>Создать</p>} />
 			</Route>
 		</Route>
 	)

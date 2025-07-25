@@ -9,6 +9,7 @@ const Input: FC<InputProps> = ({
 	sx,
 	subContent,
 	type = "text",
+	isAvailable=true
 }) => {
 	return (
 		<FormControl>
@@ -17,6 +18,7 @@ const Input: FC<InputProps> = ({
 				fullWidth={!!fullWidth}
 				type={type}
 				{...register}
+				disabled={!isAvailable}
 				sx={{
 					"& .MuiOutlinedInput-input": {
 						color: "var(--light-grey-color)",
@@ -46,9 +48,20 @@ const Input: FC<InputProps> = ({
 						},
 
 					"& .MuiOutlinedInput-root": {
+						borderColor: "var(--light-grey-color)",
 						backgroundColor: "transparent",
 						borderRadius: "8px",
 					},
+					'& .MuiInputBase-input.Mui-disabled': {
+						'WebkitTextFillColor': "var(--light-grey-color)",
+      					color: "var(--light-grey-color)",
+						cursor: "not-allowed",
+    				},
+    				'& .MuiInputLabel-root.Mui-disabled': {
+						'WebkitTextFillColor': "var(--light-grey-color)",
+      					color: "var(--light-grey-color)",
+						cursor: "not-allowed",
+    				},
 					...sx,
 				}}
 			/>

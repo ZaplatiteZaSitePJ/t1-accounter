@@ -71,15 +71,17 @@ const EditForm = () => {
 				<h2>Контактные данные</h2>
 
 				<EmailField
+					sx={{"& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+						{
+							borderColor: "var(--grey-color)",
+						},
+						"& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
+						{
+							borderColor: "var(--grey-color)",
+						},
+					}}
+					isAvailable={false}
 					register={register("email", emailOptions)}
-					subContent={
-						<>
-							<p className={styles.subInfo}>обязательное поле!</p>
-							{errors.email && (
-								<div className={styles.errorDiv}></div>
-							)}
-						</>
-					}
 				/>
 
 				<PhoneField

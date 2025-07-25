@@ -2,7 +2,7 @@ import type { InputProps } from "@shared/ui/ui-kit/inputs/types";
 import Input from "@shared/ui/ui-kit/inputs/ui/Input";
 import type { FC } from "react";
 
-const EmailField: FC<InputProps> = ({ register, sx, subContent }) => {
+const EmailField: FC<InputProps> = ({ register, sx, subContent, isAvailable }) => {
 	return (
 		<Input
 			label="почта"
@@ -10,6 +10,7 @@ const EmailField: FC<InputProps> = ({ register, sx, subContent }) => {
 			register={register}
 			fullWidth
 			type="email"
+			isAvailable={isAvailable}
 			sx={sx}
 			subContent={subContent}
 		/>

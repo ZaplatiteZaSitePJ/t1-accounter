@@ -95,7 +95,7 @@ legend {
 }
 
 
-/*Исправление автозаполненных инпутов*/
+/*Исправление автозаполняемых инпутов*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
