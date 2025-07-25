@@ -18,7 +18,6 @@ const options = [
 	{ en: "Accountant", ru: "Бухгалтер" },
 	{ en: "Marketer", ru: "Маркетолог" },
 	{ en: "HR", ru: "HR-специалист" },
-	{ en: "Support", ru: "Саппорт" }
 ];
 
 const EmploymentSelect: FC<Props> = ({
@@ -68,9 +67,7 @@ const EmploymentSelect: FC<Props> = ({
 				}}
 			>
 				{options.map((employment) => (
-					<MenuItem value={employment.ru}>
-						{employment.ru}
-					</MenuItem>
+					<MenuItem value={employment.ru}>{employment.ru}</MenuItem>
 				))}
 			</Select>
 			{subContent}
