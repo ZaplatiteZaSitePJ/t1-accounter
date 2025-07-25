@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navigation.module.scss";
 import cn from "classnames";
-import { handleLogout } from "@features/api/auth/handleLogout";
+import { handleLogout } from "@features/api/actions/handleLogout";
 
 export default function Navigation() {
 	const navigate = useNavigate()

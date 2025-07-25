@@ -12,9 +12,15 @@
 	}
 
 	&__buttonsContainer {
+		margin-top: 48px;
 		display: flex;
 		gap: 48px;
-		justify-content: end;
+		justify-content: space-between;
+
+		div {
+			display: flex;
+			gap: 48px;
+		}
 	}
 }
 

@@ -1,9 +1,13 @@
+import { useLoaderData } from "react-router-dom"
 import styles from "./Account.module.scss"
 
 export default function Account() {
-  return (
-    <table>
-        <caption>Мужчина Мужиков</caption>
+    const userData = useLoaderData()
+	console.log(userData)
+
+    return (
+    <table className={styles.table}>
+        <caption>{userData.fullName}</caption>
         <thead>
             <tr>
                 <th>id</th>
@@ -14,10 +18,10 @@ export default function Account() {
         </thead>
         <tbody>
             <tr>
-                <td>21312412122e3r3</td>
-                <td>email@gmail.com</td>
-                <td>+79999999999</td>
-                <td>Бухгалтер</td>
+                <td>{userData.id}</td>
+                <td>{userData.email}</td>
+                <td>{userData.phone ? `${userData.phone}` : "-"}</td>
+                <td>{userData.employment ? `${userData.employment}` : "-"}</td>
             </tr>
         </tbody>
     </table>

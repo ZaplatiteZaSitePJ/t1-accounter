@@ -4,11 +4,10 @@ import { useForm } from "react-hook-form";
 import EmailField from "@features/userForm/ui/EmailField";
 import { emailOptions } from "@features/userForm/options/email.options";
 import PasswordField from "@features/userForm/ui/PasswordField";
-import { handleLogin } from "@features/api/auth/handleLogin";
+import { handleLogin } from "@features/api/actions/handleLogin";
 import { ButtonFilled } from "@shared/ui/ui-kit/buttons";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import cn from "classnames";
 import { useUserId } from "@shared/context/useUserId";
 
 const LoginForm = () => {
