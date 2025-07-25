@@ -18,7 +18,6 @@ const EditForm = () => {
 	const {
 		register,
 		handleSubmit,
-		watch,
 		reset,
 		getValues,
 		formState: { errors },

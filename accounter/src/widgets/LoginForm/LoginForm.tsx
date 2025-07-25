@@ -6,7 +6,7 @@ import { emailOptions } from "@features/userForm/options/email.options";
 import PasswordField from "@features/userForm/ui/PasswordField";
 import { handleLogin } from "@features/api/actions/handleLogin";
 import { ButtonFilled } from "@shared/ui/ui-kit/buttons";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useUserId } from "@shared/context/useUserId";
 
