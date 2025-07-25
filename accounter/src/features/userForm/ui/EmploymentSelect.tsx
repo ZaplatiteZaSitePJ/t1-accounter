@@ -9,8 +9,16 @@ type Props = InputProps & {
 };
 
 const options = [
-	{ value: "Manager", ru: "Менеджер" },
-	{ value: "Director", ru: "Директор" },
+	{ value: "Engineer", ru: "Инженер" },
+	{ value: "Developer", ru: "Разработчик" },
+	{ value: "Designer", ru: "Дизайнер" },
+	{ value: "Analyst", ru: "Аналитик" },
+	{ value: "Administrator", ru: "Администратор" },
+	{ value: "Consultant", ru: "Консультант" },
+	{ value: "Accountant", ru: "Бухгалтер" },
+	{ value: "Marketer", ru: "Маркетолог" },
+	{ value: "HR", ru: "HR-специалист" },
+	{ value: "Support", ru: "Саппорт" }
 ];
 
 const EmploymentSelect: FC<Props> = ({
