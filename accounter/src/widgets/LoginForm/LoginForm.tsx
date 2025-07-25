@@ -17,17 +17,20 @@ const LoginForm = () => {
 
 	const navigate = useNavigate();
 
-	const {setId} = useUserId()
+	const { setId } = useUserId();
 
 	const onAuth = async () => {
 		try {
-			const id = await handleLogin(getValues("email"), getValues("password"));
+			const id = await handleLogin(
+				getValues("email"),
+				getValues("password")
+			);
 			console.log(getValues());
 			if (id) {
-				setId(String(id))
+				setId(String(id));
 			}
 
-			localStorage.setItem("userId", String(id))
+			localStorage.setItem("userId", String(id));
 			reset();
 			navigate("/");
 		} catch {
@@ -46,7 +49,6 @@ const LoginForm = () => {
 			/>
 
 			<div className={styles.userForm__buttonsContainer}>
-				<Link to="/auth/registration">Зарегистрироваться?</Link>
 				<ButtonFilled
 					type="submit"
 					sx={{

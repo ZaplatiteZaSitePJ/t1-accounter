@@ -9,11 +9,11 @@
 	&__passwordContainer {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 24px;
+		gap: 16px 24px;
 	}
 
 	&__buttonsContainer {
-		margin-top: 48px;
+		margin-top: 16px;
 		display: flex;
 		gap: 48px;
 		justify-content: end;
@@ -24,7 +24,6 @@ h2 {
 	font-size: var(--large-font-size);
 	font-weight: bold;
 	width: 100%;
-	margin-bottom: 12px;
 }
 
 .errorDiv {

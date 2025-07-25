@@ -12,14 +12,12 @@ import { phoneOptions } from "@features/userForm/options/phone.options";
 import EmploymentSelect from "@features/userForm/ui/EmploymentSelect";
 import { ButtonBordered, ButtonFilled } from "@shared/ui/ui-kit/buttons";
 import PasswordField from "@features/userForm/ui/PasswordField";
-import { Divider } from "@mui/material";
 import { handleCreate } from "@features/api/actions/handleCreate";
 import { useNavigate } from "react-router-dom";
-import { handleLogin } from "@features/api/actions/handleLogin";
 
 type CreateFormType = AccountType & {
 	dublicatedPassword: string;
-}
+};
 
 const CreateForm = () => {
 	const {
@@ -29,17 +27,16 @@ const CreateForm = () => {
 		getValues,
 		formState: { errors },
 	} = useForm<CreateFormType>();
-	
-	const navigate = useNavigate()
+
+	const navigate = useNavigate();
 
 	const onCreate = async () => {
 		try {
 			await handleCreate(getValues());
-				navigate("/")
+			navigate("/");
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-		
 	};
 
 	return (
@@ -99,16 +96,14 @@ const CreateForm = () => {
 
 			<div className={styles.userForm__passwordContainer}>
 				<h2>Задайте и подтвердите пароль</h2>
+
 				<PasswordField
-					sx={{marginTop: "12px"}}
 					register={register("password", {
 						required: "Пароль обязателен",
 					})}
 					subContent={
 						<>
-							<p className={styles.subInfo}>
-								обязательное поле
-							</p>
+							<p className={styles.subInfo}>обязательное поле</p>
 							{errors.password && (
 								<div className={styles.errorDiv}></div>
 							)}
@@ -117,47 +112,43 @@ const CreateForm = () => {
 				/>
 
 				<PasswordField
-					sx={{marginTop: "12px"}}
+					label="Подтвердите пароль"
 					register={register("dublicatedPassword", {
 						required: "Повторить пароль обязательно",
-						validate: (value) => value === getValues('password')
+						validate: (value) => value === getValues("password"),
 					})}
 					subContent={
 						<>
-							<p className={styles.subInfo}>
-								обязательное поле  
-							</p>
+							<p className={styles.subInfo}>обязательное поле</p>
 							{errors.dublicatedPassword && (
 								<>
 									<div className={styles.errorDiv}></div>
 								</>
-								
 							)}
 						</>
 					}
 				/>
 
 				<p className={styles.subInfo}>
-								Техническим заданием не
-								предусмотрено <b>никаких</b> ограничений на пароль,
-								но, пожалуйста, будьте разумны!
-							</p>
+					Техническим заданием не предусмотрено <b>никаких</b>{" "}
+					ограничений на пароль, но, пожалуйста, будьте разумны!
+				</p>
 			</div>
 
 			<div className={styles.userForm__buttonsContainer}>
-					<ButtonBordered onClick={() => reset()}>
-						Сбросить
-					</ButtonBordered>
-					<ButtonFilled
-						type="submit"
-						sx={{
-							backgroundColor: "var(--green-color)",
-							borderColor: "var(--green-color)",
-						}}
-					>
-						Создать
-					</ButtonFilled>
-				</div>
+				<ButtonBordered onClick={() => reset()}>
+					Сбросить
+				</ButtonBordered>
+				<ButtonFilled
+					type="submit"
+					sx={{
+						backgroundColor: "var(--green-color)",
+						borderColor: "var(--green-color)",
+					}}
+				>
+					Создать
+				</ButtonFilled>
+			</div>
 		</form>
 	);
 };

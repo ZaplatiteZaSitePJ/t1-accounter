@@ -9,13 +9,15 @@ const Input: FC<InputProps> = ({
 	sx,
 	subContent,
 	type = "text",
-	isAvailable=true
+	isAvailable = true,
+	placeholder,
 }) => {
 	return (
 		<FormControl>
 			<TextField
 				label={label}
 				fullWidth={!!fullWidth}
+				placeholder={placeholder}
 				type={type}
 				{...register}
 				disabled={!isAvailable}
@@ -52,16 +54,16 @@ const Input: FC<InputProps> = ({
 						backgroundColor: "transparent",
 						borderRadius: "8px",
 					},
-					'& .MuiInputBase-input.Mui-disabled': {
-						'WebkitTextFillColor': "var(--light-grey-color)",
-      					color: "var(--light-grey-color)",
+					"& .MuiInputBase-input.Mui-disabled": {
+						WebkitTextFillColor: "var(--light-grey-color)",
+						color: "var(--light-grey-color)",
 						cursor: "not-allowed",
-    				},
-    				'& .MuiInputLabel-root.Mui-disabled': {
-						'WebkitTextFillColor': "var(--light-grey-color)",
-      					color: "var(--light-grey-color)",
+					},
+					"& .MuiInputLabel-root.Mui-disabled": {
+						WebkitTextFillColor: "var(--light-grey-color)",
+						color: "var(--light-grey-color)",
 						cursor: "not-allowed",
-    				},
+					},
 					...sx,
 				}}
 			/>

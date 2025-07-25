@@ -1,5 +1,7 @@
 .container {
-    padding: 40px 55px;
+	padding: 40px 55px;
+	overflow: auto;
+	height: calc(100vh - 118px);
 }
 
 .title {

@@ -24,7 +24,7 @@ const EditForm = () => {
 		formState: { errors },
 	} = useForm<AccountType>();
 
-	const userData = useLoaderData()
+	const userData = useLoaderData();
 
 	useEffect(() => {
 		if (userData) {
@@ -71,14 +71,15 @@ const EditForm = () => {
 				<h2>Контактные данные</h2>
 
 				<EmailField
-					sx={{"& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
-						{
-							borderColor: "var(--grey-color)",
-						},
+					sx={{
+						"& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+							{
+								borderColor: "var(--grey-color)",
+							},
 						"& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline":
-						{
-							borderColor: "var(--grey-color)",
-						},
+							{
+								borderColor: "var(--grey-color)",
+							},
 					}}
 					isAvailable={false}
 					register={register("email", emailOptions)}
@@ -95,10 +96,13 @@ const EditForm = () => {
 			</div>
 
 			<div className={styles.userForm__buttonsContainer}>
-				<ButtonBordered onClick={() => reset()} sx={{
+				<ButtonBordered
+					onClick={() => reset()}
+					sx={{
 						color: "var(--light-grey-color)",
 						borderColor: "var(--red-color)",
-					}}>
+					}}
+				>
 					Удалить
 				</ButtonBordered>
 
