@@ -11,7 +11,7 @@ export default function Navigation() {
 			localStorage.removeItem("userId")
 			navigate("/auth/login")
 		} catch (error) {
-			console.log("что--то пошло не так")
+			console.log("что-то пошло не так")
 		}
 	}
 
@@ -38,7 +38,7 @@ export default function Navigation() {
 				изменить
 			</NavLink>
 			<NavLink
-				to={"/auth/registration"}
+				to={"/add"}
 				className={({ isActive }) =>
 					cn(styles.navigation__pages, {
 						[styles.navigation__active]: isActive,

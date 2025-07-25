@@ -1,7 +1,7 @@
 import Account from "@entities/Account/ui/Account";
 import styles from "./Main.module.scss";
 
-export default function Main() {
+export default function MainPage() {
 
 	return (
 		<div className={styles.container}>

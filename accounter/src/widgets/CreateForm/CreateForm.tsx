@@ -1,5 +1,5 @@
 import type { AccountType } from "@entities/Account/types/Account.interface";
-import styles from "./EditForm.module.scss";
+import styles from "./CreateForm.module.scss";
 import { useForm } from "react-hook-form";
 import NameField from "@features/userForm/ui/NameField";
 import { nameOption } from "@features/userForm/options/name.options";
@@ -11,34 +11,32 @@ import PhoneField from "@features/userForm/ui/PhoneField";
 import { phoneOptions } from "@features/userForm/options/phone.options";
 import EmploymentSelect from "@features/userForm/ui/EmploymentSelect";
 import { ButtonBordered, ButtonFilled } from "@shared/ui/ui-kit/buttons";
-import { useLoaderData } from "react-router-dom";
-import { useEffect } from "react";
+import PasswordField from "@features/userForm/ui/PasswordField";
+import { Divider } from "@mui/material";
+import { handleCreate } from "@features/api/actions/handleCreate";
 
-const EditForm = () => {
+const CreateForm = () => {
 	const {
 		register,
 		handleSubmit,
-		watch,
 		reset,
 		getValues,
 		formState: { errors },
 	} = useForm<AccountType>();
 
-	const userData = useLoaderData()
-
-	useEffect(() => {
-		if (userData) {
-			reset(userData);
+	const onCreate = async () => {
+		try {
+			console.log(getValues());
+			await handleCreate(getValues());
+			reset();
+		} catch (error) {
+			console.log(error)
 		}
-	}, [userData, reset]);
-
-	const onSave = () => {
-		console.log(getValues());
-		reset();
+		
 	};
 
 	return (
-		<form className={styles.userForm} onSubmit={handleSubmit(onSave)}>
+		<form className={styles.userForm} onSubmit={handleSubmit(onCreate)}>
 			<div className={styles.userForm__nameContainer}>
 				<h2>Имя</h2>
 
@@ -91,16 +89,28 @@ const EditForm = () => {
 
 				<EmploymentSelect register={register("employment")} />
 			</div>
+			<Divider sx={{backgroundColor: "var(--grey-color)"}}/>
+
+			<PasswordField
+				sx={{marginTop: "12px"}}
+				register={register("password", {
+					required: "Пароль обязателен",
+				})}
+				subContent={
+					<>
+						<p className={styles.subInfo}>
+							обязательное поле | Техническим заданием не
+							предусмотрено <b>никаких</b> ограничений на пароль,
+							но, пожалуйста, будьте разумны!
+						</p>
+						{errors.password && (
+							<div className={styles.errorDiv}></div>
+						)}
+					</>
+				}
+			/>
 
 			<div className={styles.userForm__buttonsContainer}>
-				<ButtonBordered onClick={() => reset()} sx={{
-						color: "var(--light-grey-color)",
-						borderColor: "var(--red-color)",
-					}}>
-					Удалить
-				</ButtonBordered>
-
-				<div>
 					<ButtonBordered onClick={() => reset()}>
 						Сбросить
 					</ButtonBordered>
@@ -111,12 +121,11 @@ const EditForm = () => {
 							borderColor: "var(--green-color)",
 						}}
 					>
-						Сохранить
+						Создать
 					</ButtonFilled>
 				</div>
-			</div>
 		</form>
 	);
 };
 
-export default EditForm;
+export default CreateForm;

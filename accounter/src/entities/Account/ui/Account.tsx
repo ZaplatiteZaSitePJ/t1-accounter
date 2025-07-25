@@ -20,7 +20,7 @@ export default function Account() {
             <tr>
                 <td>{userData.id}</td>
                 <td>{userData.email}</td>
-                <td>{userData.phone ? `${userData.phone}` : "-"}</td>
+                <td>{userData.telephone ? `${userData.telephone}` : "-"}</td>
                 <td>{userData.employment ? `${userData.employment}` : "-"}</td>
             </tr>
         </tbody>

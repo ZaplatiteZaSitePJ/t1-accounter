@@ -9,6 +9,7 @@ import { AuthLayout, MainLayout } from "@shared/ui";
 import EditPage from "@pages/edit/EditPage";
 import Login from "@pages/login/Login";
 import { getUser } from "@features/api/get/getUser";
+import CreatePage from "@pages/create/Create";
 
 const router =  createBrowserRouter(
 	createRoutesFromElements(
@@ -16,6 +17,7 @@ const router =  createBrowserRouter(
 			<Route path="/" element={<MainLayout />}>
 				<Route index element={<Main />} loader={getUser}/>
 				<Route path="/edit" element={<EditPage />}  loader={getUser}/>
+				<Route path="/add" element={<CreatePage />} />
 			</Route>
 
 			<Route path="/" element={<AuthLayout />}>
