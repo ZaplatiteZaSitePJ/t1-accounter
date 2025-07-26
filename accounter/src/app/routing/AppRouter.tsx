@@ -10,12 +10,13 @@ import EditPage from "@pages/edit/EditPage";
 import Login from "@pages/login/Login";
 import { getUser } from "@features/api/get/getUser";
 import CreatePage from "@pages/create/Create";
+import { combinedGetter } from "@features/api/get/combinedGetter";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route element={<Outlet />}>
 			<Route path="/" element={<MainLayout />}>
-				<Route index element={<Main />} loader={getUser} />
+				<Route index element={<Main />} loader={combinedGetter} />
 				<Route path="/edit" element={<EditPage />} loader={getUser} />
 				<Route path="/add" element={<CreatePage />} loader={getUser} />
 				<Route path="*" element={<p>Страницы не существует</p>} />

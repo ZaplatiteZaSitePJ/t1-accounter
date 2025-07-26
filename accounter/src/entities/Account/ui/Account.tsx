@@ -1,13 +1,14 @@
-import { useLoaderData } from "react-router-dom"
 import styles from "./Account.module.scss"
+import type { FC } from "react"
+import type { AccountType } from "../types/Account.interface"
 
-export default function Account() {
-    const userData = useLoaderData()
-	console.log(userData)
+type AccountTable = Pick<AccountType, "id" | "fullName" | "email" | "id" | "employment" | "phone">
+
+const Account: FC<AccountTable> = ({id, phone, fullName, email, employment}) => {
 
     return (
     <table className={styles.table}>
-        <caption>{userData.fullName}</caption>
+        <caption>{fullName}</caption>
         <thead>
             <tr>
                 <th>id</th>
@@ -18,12 +19,14 @@ export default function Account() {
         </thead>
         <tbody>
             <tr>
-                <td>{userData.id}</td>
-                <td>{userData.email}</td>
-                <td>{userData.telephone ? `${userData.telephone}` : "-"}</td>
-                <td>{userData.employment ? `${userData.employment}` : "-"}</td>
+                <td>{id}</td>
+                <td>{email}</td>
+                <td>{phone ? `${phone}` : "-"}</td>
+                <td>{employment ? `${employment}` : "-"}</td>
             </tr>
         </tbody>
     </table>
   )
 }
+
+export default Account
