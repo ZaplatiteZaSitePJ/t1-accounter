@@ -8,7 +8,6 @@ import { handleLogin } from "@features/api/actions/handleLogin";
 import { ButtonFilled } from "@shared/ui/ui-kit/buttons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useUserId } from "@shared/context/useUserId";
 
 const LoginForm = () => {
 	const { register, handleSubmit, reset, getValues } =
@@ -17,7 +16,6 @@ const LoginForm = () => {
 
 	const navigate = useNavigate();
 
-	const { setId } = useUserId();
 
 	const onAuth = async () => {
 		try {
@@ -26,9 +24,6 @@ const LoginForm = () => {
 				getValues("password")
 			);
 			console.log(getValues());
-			if (id) {
-				setId(String(id));
-			}
 
 			localStorage.setItem("userId", String(id));
 			reset();

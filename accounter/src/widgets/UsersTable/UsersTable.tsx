@@ -1,7 +1,5 @@
 import styles from "./UsersTable.module.scss"
 import type { AccountType } from "@entities/Account/types/Account.interface"
-import { Divider } from "@mui/material";
-import { useUserId } from "@shared/context/useUserId";
 import type { FC } from "react"
 
 
