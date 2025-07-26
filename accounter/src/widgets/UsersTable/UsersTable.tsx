@@ -1,14 +1,36 @@
 import styles from "./UsersTable.module.scss";
 import type { AccountType } from "@entities/Account/types/Account.interface";
+import { handleDelete } from "@features/api/actions/handleDelete";
 import { ButtonBordered } from "@shared/ui/ui-kit/buttons";
-import type { FC } from "react";
+import { useEffect, useState, type FC } from "react";
 
 type UsersTableProps = {
 	allUsersData: AccountType[];
 };
 
 const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
-	const filtredUsers = allUsersData.filter((user) => user.id !== "1");
+
+	const [filtredUsers, setFiltredUsers] = useState<AccountType[]>([]) 
+
+	const deleteUser = async (id: string) => {
+		try {
+			await handleDelete(id)
+			const clearedUsers = filtredUsers.filter((user) => user.id !== id)
+			setFiltredUsers(clearedUsers);
+
+		} catch (error: any){
+			console.log(error.message, "Что-то пошло не так")
+		}
+	}
+
+	useEffect(() => {
+		setFiltredUsers(allUsersData.filter((user) => user.id !== "1"));
+	}, [])
+
+	if (filtredUsers.length === 0) {
+		return <p>Нет других пользователей</p>
+	}
+
 	return (
 		<table className={styles.table}>
 			<caption>Список пользователей:</caption>
@@ -33,6 +55,7 @@ const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
 							<td>{user.employment ? user.employment : "—"}</td>
 							<td>
 								<ButtonBordered
+									onClick = {() => deleteUser(user.id)}
 									sx={{
 										color: "var(--light-grey-color)",
 										borderColor: "var(--red-color)",

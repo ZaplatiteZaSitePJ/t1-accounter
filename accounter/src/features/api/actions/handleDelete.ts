@@ -1,11 +1,9 @@
 import baseAxios from "../baseAxios";
 
-export const handleDelete = async ()=> {
-
-    const id = localStorage.getItem("userId")
+export const handleDelete = async (id: string)=> {
     
     try {
-        const response = await baseAxios.post(
+        const response = await baseAxios.delete(
             `/users/${id}`,
             {
                 headers: {

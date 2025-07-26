@@ -95,17 +95,6 @@ const EditForm = () => {
 			</div>
 
 			<div className={styles.userForm__buttonsContainer}>
-				<ButtonBordered
-					onClick={() => reset()}
-					sx={{
-						color: "var(--light-grey-color)",
-						borderColor: "var(--red-color)",
-					}}
-				>
-					Удалить
-				</ButtonBordered>
-
-				<div>
 					<ButtonBordered onClick={() => reset()}>
 						Сбросить
 					</ButtonBordered>
@@ -119,7 +108,6 @@ const EditForm = () => {
 						Сохранить
 					</ButtonFilled>
 				</div>
-			</div>
 		</form>
 	);
 };
