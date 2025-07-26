@@ -4,9 +4,9 @@ export type AccountType = {
 	surName: string;
 	fullName: string;
 	password: string;
-	phone: string;
+	phone?: string;
 	email: string;
-	employment: string;
-	userAgreement: boolean;
-	birthDate: string;
+	employment?: string;
+	userAgreement?: boolean;
+	birthDate?: string;
 };

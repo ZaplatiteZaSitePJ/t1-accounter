@@ -32,6 +32,7 @@ const CreateForm = () => {
 
 	const onCreate = async () => {
 		try {
+			console.log(getValues());
 			await handleCreate(getValues());
 			navigate("/");
 		} catch (error) {
