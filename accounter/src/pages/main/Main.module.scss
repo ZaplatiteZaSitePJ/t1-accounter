@@ -1,5 +1,8 @@
 .container {
-    padding: 40px 55px;
-    overflow: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 40px 55px;
+	overflow: auto;
 	height: calc(100vh - 118px);
 }
