@@ -9,26 +9,24 @@ type UsersTableProps = {
 };
 
 const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
-
-	const [filtredUsers, setFiltredUsers] = useState<AccountType[]>([]) 
+	const [filtredUsers, setFiltredUsers] = useState<AccountType[]>([]);
 
 	const deleteUser = async (id: string) => {
 		try {
-			await handleDelete(id)
-			const clearedUsers = filtredUsers.filter((user) => user.id !== id)
+			await handleDelete(id);
+			const clearedUsers = filtredUsers.filter((user) => user.id !== id);
 			setFiltredUsers(clearedUsers);
-
-		} catch (error: any){
-			console.log(error.message, "Что-то пошло не так")
+		} catch {
+			console.log("Что-то пошло не так");
 		}
-	}
+	};
 
 	useEffect(() => {
 		setFiltredUsers(allUsersData.filter((user) => user.id !== "1"));
-	}, [])
+	}, []);
 
 	if (filtredUsers.length === 0) {
-		return <p>Нет других пользователей</p>
+		return <p>Нет других пользователей</p>;
 	}
 
 	return (
@@ -55,7 +53,7 @@ const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
 							<td>{user.employment ? user.employment : "—"}</td>
 							<td>
 								<ButtonBordered
-									onClick = {() => deleteUser(user.id)}
+									onClick={() => deleteUser(user.id)}
 									sx={{
 										color: "var(--light-grey-color)",
 										borderColor: "var(--red-color)",

@@ -1,5 +1,5 @@
 .table {
-	width: 100%;
+	width: fit-content;
 	margin-top: 24px;
 	display: flex;
 	flex-direction: column;
@@ -28,7 +28,7 @@
 		td {
 			font-size: var(--small-font-size);
 			width: 700px;
-			overflow: hidden;
+			overflow-x: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			padding-right: 16px;
@@ -42,6 +42,11 @@
 			padding-bottom: 0;
 			border-bottom: none;
 		}
+	}
+
+	tbody {
+		height: 300px;
+		overflow: auto;
 	}
 
 	caption {
