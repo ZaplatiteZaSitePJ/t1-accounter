@@ -1,6 +1,5 @@
 .table {
 	width: 100%;
-	max-width: 700px;
 	margin-top: 24px;
 	display: flex;
 	flex-direction: column;
@@ -8,7 +7,7 @@
 
 	tr {
 		display: flex;
-		width: 700px;
+		width: 800px;
 		padding-bottom: 8px;
 		margin-bottom: 8px;
 		border-bottom: 2px solid #414141;
@@ -33,6 +32,7 @@
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			padding-right: 16px;
+			align-self: center;
 		}
 	}
 

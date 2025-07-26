@@ -1,5 +1,6 @@
 import styles from "./UsersTable.module.scss";
 import type { AccountType } from "@entities/Account/types/Account.interface";
+import { ButtonBordered } from "@shared/ui/ui-kit/buttons";
 import type { FC } from "react";
 
 type UsersTableProps = {
@@ -16,6 +17,7 @@ const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
 					<th className={styles.id}>id</th>
 					<th>почта</th>
 					<th>должность</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,6 +30,16 @@ const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
 							<td className={styles.id}>{user.id}</td>
 							<td>{user.email}</td>
 							<td>{user.employment ? user.employment : "—"}</td>
+							<td>
+								<ButtonBordered
+									sx={{
+										color: "var(--light-grey-color)",
+										borderColor: "var(--red-color)",
+									}}
+								>
+									Удалить
+								</ButtonBordered>
+							</td>
 						</tr>
 					</>
 				))}
