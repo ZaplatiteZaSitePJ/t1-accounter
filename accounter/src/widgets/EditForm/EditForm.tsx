@@ -91,7 +91,7 @@ const EditForm = () => {
 					}
 				/>
 
-				<EmploymentSelect register={register("employment")} />
+				{userData.id !== "1" && <EmploymentSelect register={register("employment")} defaultValue={userData.employment}/>}
 			</div>
 
 			<div className={styles.userForm__buttonsContainer}>
