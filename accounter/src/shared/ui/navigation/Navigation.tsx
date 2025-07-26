@@ -4,16 +4,16 @@ import cn from "classnames";
 import { handleLogout } from "@features/api/actions/handleLogout";
 
 export default function Navigation() {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const onLogout = async () => {
 		try {
-			await handleLogout()
-			localStorage.removeItem("userId")
-			navigate("/auth/login")
-		} catch (error) {
-			console.log("что-то пошло не так")
+			await handleLogout();
+			localStorage.removeItem("userId");
+			navigate("/auth/login");
+		} catch {
+			console.log("что-то пошло не так");
 		}
-	}
+	};
 
 	return (
 		<nav className={styles.navigation}>
@@ -28,7 +28,7 @@ export default function Navigation() {
 				аккаунт
 			</NavLink>
 			<NavLink
-				to={"/edit"}
+				to={"/user/edit"}
 				className={({ isActive }) =>
 					cn(styles.navigation__pages, {
 						[styles.navigation__active]: isActive,
@@ -38,7 +38,7 @@ export default function Navigation() {
 				настроить
 			</NavLink>
 			<NavLink
-				to={"/add"}
+				to={"/user/create"}
 				className={({ isActive }) =>
 					cn(styles.navigation__pages, {
 						[styles.navigation__active]: isActive,
@@ -47,7 +47,11 @@ export default function Navigation() {
 			>
 				создать
 			</NavLink>
-			<button className={styles.navigation__logout} type="button" onClick={onLogout}>
+			<button
+				className={styles.navigation__logout}
+				type="button"
+				onClick={onLogout}
+			>
 				<span>выйти</span>
 			</button>
 		</nav>

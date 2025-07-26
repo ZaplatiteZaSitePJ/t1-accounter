@@ -17,8 +17,16 @@ const router = createBrowserRouter(
 		<Route element={<Outlet />}>
 			<Route path="/" element={<MainLayout />}>
 				<Route index element={<Main />} loader={combinedGetter} />
-				<Route path="/edit" element={<EditPage />} loader={getUser} />
-				<Route path="/add" element={<CreatePage />} loader={getUser} />
+				<Route
+					path="user/edit"
+					element={<EditPage />}
+					loader={getUser}
+				/>
+				<Route
+					path="user/create"
+					element={<CreatePage />}
+					loader={getUser}
+				/>
 				<Route path="*" element={<p>Страницы не существует</p>} />
 			</Route>
 
