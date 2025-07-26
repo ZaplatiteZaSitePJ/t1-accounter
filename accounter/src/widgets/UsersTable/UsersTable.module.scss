@@ -9,6 +9,9 @@
     tr {
         display: flex;
         width: 700px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        border-bottom: 2px solid var(--grey-color);
 
         th {
             font-size: var(--normal-font-size);
@@ -29,12 +32,20 @@
         }
     }
 
+    thead {
+            tr {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+        }
+
     caption {
         text-align: left;
         font-size: var(--large-font-size);
         font-weight: bold;
         width: 100%;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
     }
 
 }

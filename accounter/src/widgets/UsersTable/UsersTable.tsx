@@ -1,6 +1,7 @@
 import styles from "./UsersTable.module.scss"
 import type { AccountType } from "@entities/Account/types/Account.interface"
 import { Divider } from "@mui/material";
+import { useUserId } from "@shared/context/useUserId";
 import type { FC } from "react"
 
 
@@ -11,7 +12,7 @@ type UsersTableProps = {
 const UsersTable: FC<UsersTableProps> = ({allUsersData}) => {
     return (
     <table className={styles.table}>
-        <caption>Подконтрольные пользователи:</caption>
+        <caption>Список пользователей:</caption>
         <thead>
             <tr>
                 <th>id</th>
@@ -20,7 +21,6 @@ const UsersTable: FC<UsersTableProps> = ({allUsersData}) => {
             </tr>
         </thead>
         <tbody>
-            <Divider sx={{margin: "8px 0", backgroundColor: "var(--grey-color)", width: "100%"}}/>
             {allUsersData.map((user: AccountType) => (
                 <>
 					<tr key={user.id}>
@@ -28,7 +28,7 @@ const UsersTable: FC<UsersTableProps> = ({allUsersData}) => {
 						<td>{user.email}</td>
 						<td>{user.fullName}</td>
 					</tr>
-                    <Divider sx={{margin: "8px 0", backgroundColor: "var(--grey-color)", width: "100%"}}/>
+
                 </>
 				))}
         </tbody>
