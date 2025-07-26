@@ -13,7 +13,6 @@ const options = [
 	{ en: "Developer", ru: "Разработчик" },
 	{ en: "Designer", ru: "Дизайнер" },
 	{ en: "Analyst", ru: "Аналитик" },
-	{ en: "Administrator", ru: "Администратор" },
 	{ en: "Consultant", ru: "Консультант" },
 	{ en: "Accountant", ru: "Бухгалтер" },
 	{ en: "Marketer", ru: "Маркетолог" },

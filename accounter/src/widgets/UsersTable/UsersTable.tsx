@@ -8,6 +8,7 @@ type UsersTableProps = {
 };
 
 const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
+	const filtredUsers = allUsersData.filter((user) => user.id !== "1");
 	return (
 		<table className={styles.table}>
 			<caption>Список пользователей:</caption>
@@ -21,7 +22,7 @@ const UsersTable: FC<UsersTableProps> = ({ allUsersData }) => {
 				</tr>
 			</thead>
 			<tbody>
-				{allUsersData.map((user: AccountType) => (
+				{filtredUsers.map((user: AccountType) => (
 					<>
 						<tr key={user.id}>
 							<td className={styles.firstColumn}>

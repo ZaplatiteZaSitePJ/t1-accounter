@@ -4,12 +4,18 @@ import { useLoaderData } from "react-router-dom";
 import UsersTable from "@widgets/UsersTable/UsersTable";
 
 export default function MainPage() {
-	const {userData, allUsersData} = useLoaderData()
+	const { userData, allUsersData } = useLoaderData();
 
 	return (
 		<div className={styles.container}>
-			<Account id={userData.id} phone={userData.telephone} fullName={userData.fullName} email={userData.email} employment={userData.employment}/>
-			<UsersTable allUsersData={allUsersData}/>
+			<Account
+				id={userData.id}
+				phone={userData.telephone}
+				fullName={userData.fullName}
+				email={userData.email}
+				employment={userData.employment}
+			/>
+			{userData.id === "1" && <UsersTable allUsersData={allUsersData} />}
 		</div>
 	);
 }

@@ -3,8 +3,7 @@ import baseAxios from "../baseAxios";
 import { redirect } from "react-router-dom";
 
 export const getUser = async () => {
-
-	const userId = localStorage.getItem("userId")
+	const userId = localStorage.getItem("userId");
 
 	try {
 		const response = await baseAxios.get(`/users/${userId}`, {
@@ -16,12 +15,18 @@ export const getUser = async () => {
 
 		console.log("Информация:", response.data);
 		return response.data;
-	} catch (error: any) {
-		if (axios.isAxiosError(error) && (error.response?.status === 404 || error.response?.status === 401)) {
-			console.log("Необходимо пройти авторизацию!")
+	} catch (error: unknown) {
+		if (
+			axios.isAxiosError(error) &&
+			(error.response?.status === 404 || error.response?.status === 401)
+		) {
+			console.log("Необходимо пройти авторизацию!");
 			throw redirect("/auth/login");
 		}
-		console.error("Ошибка логина:", error.response?.data || error.message);
+		console.error(
+			"Ошибка логина:",
+			axios.isAxiosError(error) ? error.response?.data : error
+		);
 		throw error;
 	}
 };
